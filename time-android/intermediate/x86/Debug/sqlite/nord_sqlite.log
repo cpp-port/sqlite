@@ -1,0 +1,14 @@
+﻿  ANDROID_HOME=C:\\Microsoft\AndroidSDK\25
+  ANT_HOME=C:\Program Files\Microsoft Visual Studio\2022\Community\Apps\apache-ant-1.9.3
+  JAVA_HOME=C:\Program Files\Android\jdk\jdk-8.0.302.8-hotspot\jdk8u302-b08
+  NDK_ROOT=C:\archive\android-ndk-r23b
+  shell.c
+  sqlite3.c
+shell.c(15,10): fatal error : 'platform/third_private_config.h' file not found
+  #include "platform/third_private_config.h"
+           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  1 error generated.
+  In file included from sqlite3.c:20:
+C:\basis\operating-system\operating-system-android\_seed\../../operating-system-android\operating_system/third_private_config.h(7,10): fatal error : 'platform/config.h' file not found
+  #include "platform/config.h"
+           ^~~~~~~~~~~~~~~~~~~
