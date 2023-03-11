@@ -37,7 +37,7 @@
   <PropertyGroup Label="Globals">
     <ProjectName>sqlite</ProjectName>
     <ProjectGuid>{424F72D6-053A-41C5-BE03-3B0BD535F1EB}</ProjectGuid>
-    <RootNamespace>third</RootNamespace>
+    <RootNamespace>sqlite</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
