@@ -1376,7 +1376,7 @@ struct sqlite3_vfs {
 ** when SQLite is compiled with [SQLITE_OMIT_AUTOINIT] might become the
 ** default behavior in some future release of SQLite.
 **
-** The sqlite3_os_init() routine does operating-system specific
+** The sqlite3_os_init() routine does operating_system specific
 ** initialization of the SQLite library.  The sqlite3_os_end()
 ** routine undoes the effect of sqlite3_os_init().  Typical tasks
 ** performed by these routines include allocation or deallocation
@@ -2483,7 +2483,7 @@ SQLITE_API char *SQLITE_STDCALL sqlite3_vsnprintf(int,char*,const char*, va_list
 **
 ** The SQLite core uses these three routines for all of its own
 ** internal memory allocation needs. "Core" in the previous sentence
-** does not include operating-system specific VFS implementation.  The
+** does not include operating_system specific VFS implementation.  The
 ** Windows VFS uses native malloc() and free() for some operations.
 **
 ** ^The sqlite3_malloc() routine returns a pointer to a block
@@ -5622,7 +5622,7 @@ SQLITE_API int SQLITE_STDCALL sqlite3_table_column_metadata(
 ** ^The sqlite3_load_extension() interface attempts to load an
 ** [SQLite extension] library contained in the file zFile.  If
 ** the file cannot be loaded directly, attempts are made to load
-** with various operating-system specific extensions added.
+** with various operating_system specific extensions added.
 ** So for example, if "samplelib" cannot be loaded, then names like
 ** "samplelib.so" or "samplelib.dylib" or "samplelib.dll" might
 ** be tried also.
