@@ -1,4 +1,5 @@
 .DS_Store
+*.pdb
 _packages.txt
 deployment.rc
 application_build_helper_input.txt
