@@ -3,9 +3,7 @@ project(sqlite C)
 
 
 list(APPEND library_source
-        shell.c
        sqlite3.c
-        version.c
 )
 
 
@@ -16,10 +14,24 @@ add_library(static_${PROJECT_NAME}
         STATIC ${library_source}
 )
 
-target_compile_definitions(${PROJECT_NAME} PRIVATE HAVE_CONFIG_H _AURA_SQLITE)
-target_compile_definitions(static_${PROJECT_NAME} PRIVATE HAVE_CONFIG_H _AURA_SQLITE)
+target_compile_definitions(${PROJECT_NAME} PRIVATE _AURA_SQLITE)
+target_compile_definitions(static_${PROJECT_NAME} PRIVATE _AURA_SQLITE)
 
-if(${this_system_libraries})
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
+target_include_directories(static_${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
+set_target_properties(static_${PROJECT_NAME} PROPERTIES POSITION_INDEPENDENT_CODE ON)
+
+if(CMAKE_SYSTEM_NAME STREQUAL "SunOS")
+  target_compile_definitions(${PROJECT_NAME} PRIVATE _REENTRANT)
+  target_compile_definitions(static_${PROJECT_NAME} PRIVATE _REENTRANT)
+endif()
+
+set(THREADS_PREFER_PTHREAD_FLAG TRUE)
+find_package(Threads REQUIRED)
+target_link_libraries(${PROJECT_NAME} PRIVATE Threads::Threads ${CMAKE_DL_LIBS})
+target_link_libraries(static_${PROJECT_NAME} PUBLIC Threads::Threads ${CMAKE_DL_LIBS})
+
+if(this_system_libraries)
   target_link_libraries(${PROJECT_NAME} PRIVATE ${this_system_libraries})
 endif()
 
