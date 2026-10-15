@@ -1,6 +1,20 @@
 cmake_minimum_required(VERSION 3.16)
 project(sqlite C)
 
+if(__REACTOS__)
+    add_library(sqlite SHARED "${CMAKE_CURRENT_SOURCE_DIR}/sqlite3.c")
+    set_target_properties(sqlite PROPERTIES PREFIX "" WINDOWS_EXPORT_ALL_SYMBOLS ON)
+    target_include_directories(sqlite PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/include")
+    target_compile_definitions(sqlite PRIVATE __REACTOS__ _WIN32_WINNT=0x0501 WINVER=0x0501 _AURA_SQLITE)
+    if(MINGW)
+        target_link_options(sqlite PRIVATE -static-libgcc)
+    endif()
+    install(TARGETS sqlite RUNTIME DESTINATION binary ARCHIVE DESTINATION library)
+    install(FILES "${CMAKE_CURRENT_SOURCE_DIR}/include/sqlite3.h" DESTINATION include)
+
+    return()
+endif()
+
 
 list(APPEND library_source
        sqlite3.c
