@@ -136511,7 +136511,7 @@ SQLITE_PRIVATE int sqlite3Fts5Init(sqlite3*);
 /* IMPLEMENTATION-OF: R-46656-45156 The sqlite3_version[] string constant
 ** contains the text of SQLITE_VERSION macro. 
 */
-SQLITE_API const char sqlite3_version[] = SQLITE_VERSION;
+//SQLITE_API const char sqlite3_version[] = SQLITE_VERSION;
 
 /* IMPLEMENTATION-OF: R-53536-42575 The sqlite3_libversion() function returns
 ** a pointer to the to the sqlite3_version[] string constant. 
